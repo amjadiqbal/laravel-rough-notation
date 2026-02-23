@@ -69,6 +69,15 @@ Publish local ESM script:
 php artisan rough:publish-assets --path=public/vendor/rough-notation
 ```
 
+## Quick Start
+
+- Install: `composer require amjadiqbal/laravel-rough-notation`
+- Guided install: `php artisan rough:install`
+- Publish config: `php artisan vendor:publish --tag=rough-notation-config`
+- Publish local ESM: `php artisan rough:publish-assets --path=public/vendor/rough-notation`
+- Add scripts: `@roughNotationScripts`
+- Annotate with directives, components, or the builder API
+
 ## Setup
 
 Add scripts to your layout:
@@ -96,6 +105,24 @@ return [
 
 - PHP 8.1+
 - Laravel 11
+
+## Example Layout
+
+```blade
+<!-- resources/views/layouts/app.blade.php -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rough Notation Demo</title>
+</head>
+<body>
+  @yield('content')
+  @roughNotationScripts
+</body>
+</html>
+```
 
 ## Usage
 
@@ -156,6 +183,34 @@ Props:
 - group: string group id to sequence annotations
 - tag: wrapper tag (defaults to span)
 
+## Demo Page
+
+```php
+// routes/web.php
+use Illuminate\Support\Facades\Route;
+Route::view('/rough-demo', 'rough-demo');
+```
+
+```blade
+<!-- resources/views/rough-demo.blade.php -->
+@extends('layouts.app')
+
+@section('content')
+  <div style="display:grid; gap:16px; padding:24px;">
+    @annotate('underline') Underline @endannotate
+    @annotate('box', ['padding' => 8]) Boxed @endannotate
+    @annotate('circle', ['color' => 'red']) Circled @endannotate
+    @annotate('highlight', ['color' => '#fff59d']) Highlighted @endannotate
+    @annotate('strike-through') Struck @endannotate
+    @annotate('crossed-off') Crossed @endannotate
+    @annotate('bracket', ['brackets' => ['left','right']]) Bracketed @endannotate
+    @annotate('underline', [], 'hero') Step 1 @endannotate
+    @annotate('box', ['padding' => 8], 'hero') Step 2 @endannotate
+    @annotate('circle', ['color' => 'red'], 'hero') Step 3 @endannotate
+  </div>
+@endsection
+```
+
 ## Types Gallery
 
 Each example shows the directive and a short description.
@@ -189,6 +244,15 @@ Each example shows the directive and a short description.
   @annotate('bracket', ['brackets' => ['left', 'right']]) Bracketed @endannotate
   ```
 
+## Livewire Usage
+
+- The scripts directive auto re-initializes after Livewire updates.
+- For manual re-init:
+
+```js
+window.initRoughNotation();
+```
+
 ## Testing
 
 ```bash
@@ -209,6 +273,15 @@ vendor/bin/pest
 - iterations: int number of sketch strokes
 - animationDuration: int in ms
 - brackets: array|string (left|right|top|bottom) only for type=bracket
+
+## Screenshots
+
+<p align="center">
+  <img src="https://via.placeholder.com/800x200.png?text=Underline+Example" alt="Underline Example" />
+  <img src="https://via.placeholder.com/800x200.png?text=Box+Example" alt="Box Example" />
+  <img src="https://via.placeholder.com/800x200.png?text=Circle+Example" alt="Circle Example" />
+  <img src="https://via.placeholder.com/800x200.png?text=Highlight+Example" alt="Highlight Example" />
+</p>
 
 ## Contributing
 
