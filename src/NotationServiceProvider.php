@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use AmjadIqbal\RoughNotation\Console\InstallCommand;
 use AmjadIqbal\RoughNotation\Console\PublishAssetsCommand;
+use AmjadIqbal\RoughNotation\View\Components\Annotate;
 
 class NotationServiceProvider extends ServiceProvider
 {
@@ -14,6 +15,9 @@ class NotationServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__ . '/../config/rough-notation.php' => config_path('rough-notation.php'),
         ], 'rough-notation-config');
+
+        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'rough-notation');
+        Blade::component(Annotate::class, 'annotate');
 
         if ($this->app->runningInConsole()) {
             $this->commands([
@@ -53,6 +57,9 @@ class NotationServiceProvider extends ServiceProvider
                 . "}"
                 . "window.initRoughNotation = initRoughNotation;"
                 . "document.addEventListener(\"DOMContentLoaded\", initRoughNotation);"
+                . "if (window.Livewire && window.Livewire.hook) {"
+                . "window.Livewire.hook('message.processed', () => { initRoughNotation(); });"
+                . "}"
                 . "</script>';"
                 . " ?>";
         });
