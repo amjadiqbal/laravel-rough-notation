@@ -12,6 +12,8 @@
   <a href="https://github.com/amjadiqbal/laravel-rough-notation/actions"><img alt="CI" src="https://img.shields.io/badge/CI-GitHub%20Actions-informational?style=flat-square"></a>
   <a href="https://github.com/amjadiqbal/laravel-rough-notation/stargazers"><img alt="Stars" src="https://img.shields.io/github/stars/amjadiqbal/laravel-rough-notation?style=flat-square"></a>
   <a href="https://github.com/amjadiqbal/laravel-rough-notation/issues"><img alt="Issues" src="https://img.shields.io/github/issues/amjadiqbal/laravel-rough-notation?style=flat-square"></a>
+  <img alt="Code Style" src="https://img.shields.io/badge/code%20style-PSR--12-informational?style=flat-square">
+  <img alt="SemVer" src="https://img.shields.io/badge/versioning-SemVer-success?style=flat-square">
 </p>
 
 # Laravel Rough Notation
@@ -53,6 +55,20 @@ Example:
 php artisan rough:install --cdn=false --publish-assets=true --assets-path=public/vendor/rough-notation
 ```
 
+### Publish Config and Assets
+
+Publish the package config:
+
+```bash
+php artisan vendor:publish --tag=rough-notation-config
+```
+
+Publish local ESM script:
+
+```bash
+php artisan rough:publish-assets --path=public/vendor/rough-notation
+```
+
 ## Setup
 
 Add scripts to your layout:
@@ -75,6 +91,11 @@ return [
     ],
 ];
 ```
+
+### Requirements
+
+- PHP 8.1+
+- Laravel 11
 
 ## Usage
 
@@ -109,6 +130,31 @@ echo Notation::make('circle')
     ->group('hero')
     ->render('Important Text');
 ```
+
+### Blade Component
+
+Basic component:
+
+```blade
+<x-annotate type="circle" :options="['color' => 'red']">Important</x-annotate>
+```
+
+Typed components (namespaced):
+
+```blade
+<x-rough-notation::circle :options="['color' => 'red']">Circled</x-rough-notation::circle>
+<x-rough-notation::underline>Underlined</x-rough-notation::underline>
+<x-rough-notation::box :options="['padding' => 8]">Boxed</x-rough-notation::box>
+<x-rough-notation::highlight :options="['color' => '#fff59d']">Highlighted</x-rough-notation::highlight>
+<x-rough-notation::strike-through>Struck</x-rough-notation::strike-through>
+<x-rough-notation::crossed-off>Crossed</x-rough-notation::crossed-off>
+<x-rough-notation::bracket :options="['brackets' => ['left','right']]">Bracketed</x-rough-notation::bracket>
+```
+
+Props:
+- options: array of supported options
+- group: string group id to sequence annotations
+- tag: wrapper tag (defaults to span)
 
 ## Types Gallery
 
@@ -154,6 +200,15 @@ vendor/bin/pest
 - Livewire: call `window.initRoughNotation()` after component updates to re-init annotations on dynamic content.
 - Multiple groups: mix sequences by assigning different group ids to elements.
 - Local assets: after `php artisan rough:publish-assets`, set `cdn` to `false` in config to import the local ESM.
+
+## Options Reference
+
+- color: string color or hex
+- strokeWidth: int line width
+- padding: int inner padding in px
+- iterations: int number of sketch strokes
+- animationDuration: int in ms
+- brackets: array|string (left|right|top|bottom) only for type=bracket
 
 ## Contributing
 

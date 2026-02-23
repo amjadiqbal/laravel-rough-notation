@@ -18,6 +18,7 @@ class NotationServiceProvider extends ServiceProvider
 
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'rough-notation');
         Blade::component(Annotate::class, 'annotate');
+        Blade::anonymousComponentPath(__DIR__ . '/../resources/views/components/annotate', 'rough-notation');
 
         if ($this->app->runningInConsole()) {
             $this->commands([

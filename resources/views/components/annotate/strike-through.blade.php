@@ -1,0 +1,1 @@
+{!! \AmjadIqbal\RoughNotation\Notation::open('strike-through', (array) ($options ?? []), $group ?? null, $tag ?? 'span') !!}{{ $slot }}{!! \AmjadIqbal\RoughNotation\Notation::close($tag ?? 'span') !!}
