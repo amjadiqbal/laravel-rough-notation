@@ -1,0 +1,57 @@
+{
+  "name": "amjadiqbal/laravel-rough-notation",
+  "description": "Beautiful hand-drawn animations for Laravel. A lightweight Rough Notation wrapper to circle, underline, and highlight elements in your Blade and Livewire applications.",
+  "type": "library",
+  "license": "MIT",
+  "keywords": [
+    "laravel",
+    "blade",
+    "livewire",
+    "rough-notation",
+    "annotation",
+    "ui",
+    "animations"
+  ],
+  "authors": [
+    {
+      "name": "Amjad Iqbal"
+    }
+  ],
+  "require": {
+    "php": "^8.1|^8.2|^8.3",
+    "illuminate/support": "^11.0",
+    "illuminate/view": "^11.0",
+    "illuminate/contracts": "^11.0"
+  },
+  "require-dev": {
+    "orchestra/testbench": "^9.0",
+    "pestphp/pest": "^3.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "AmjadIqbal\\RoughNotation\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "AmjadIqbal\\RoughNotation\\Tests\\": "tests/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "AmjadIqbal\\RoughNotation\\NotationServiceProvider"
+      ]
+    }
+  },
+  "minimum-stability": "stable",
+  "prefer-stable": true,
+  "config": {
+    "allow-plugins": {
+      "pestphp/pest-plugin": true
+    }
+  },
+  "scripts": {
+    "test": "vendor/bin/pest"
+  }
+}
