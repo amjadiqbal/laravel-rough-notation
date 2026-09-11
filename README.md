@@ -5,14 +5,11 @@
 <p align="center">
   <a href="https://packagist.org/packages/amjadiqbal/laravel-rough-notation"><img alt="Packagist Version" src="https://img.shields.io/packagist/v/amjadiqbal/laravel-rough-notation.svg?style=flat-square"></a>
   <a href="LICENSE"><img alt="License" src="https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square"></a>
-  <img alt="Build" src="https://img.shields.io/badge/build-passing-brightgreen.svg?style=flat-square">
   <img alt="PHP" src="https://img.shields.io/badge/PHP-%5E8.1-blue?style=flat-square">
   <img alt="Laravel" src="https://img.shields.io/badge/Laravel-11-red?style=flat-square">
   <a href="https://packagist.org/packages/amjadiqbal/laravel-rough-notation"><img alt="Downloads" src="https://img.shields.io/packagist/dt/amjadiqbal/laravel-rough-notation?style=flat-square"></a>
-  <a href="https://github.com/amjadiqbal/laravel-rough-notation/actions"><img alt="CI" src="https://img.shields.io/badge/CI-GitHub%20Actions-informational?style=flat-square"></a>
-  <a href="https://github.com/amjadiqbal/laravel-rough-notation/stargazers"><img alt="Stars" src="https://img.shields.io/github/stars/amjadiqbal/laravel-rough-notation?style=flat-square"></a>
-  <a href="https://github.com/amjadiqbal/laravel-rough-notation/issues"><img alt="Issues" src="https://img.shields.io/github/issues/amjadiqbal/laravel-rough-notation?style=flat-square"></a>
-  <img alt="Code Style" src="https://img.shields.io/badge/code%20style-PSR--12-informational?style=flat-square">
+  <a href="https://github.com/AmjadIqbal/laravel-rough-notation/stargazers"><img alt="Stars" src="https://img.shields.io/github/stars/AmjadIqbal/laravel-rough-notation?style=flat-square"></a>
+  <a href="https://github.com/AmjadIqbal/laravel-rough-notation/issues"><img alt="Issues" src="https://img.shields.io/github/issues/AmjadIqbal/laravel-rough-notation?style=flat-square"></a>
   <img alt="SemVer" src="https://img.shields.io/badge/versioning-SemVer-success?style=flat-square">
 </p>
 
@@ -288,6 +285,10 @@ vendor/bin/pest
 - Follow PSR-12 code style
 - Run tests before submitting changes
 - Open a PR with a clear description
+
+## Changelog
+
+See [CHANGELOG.md](CHANGELOG.md).
 
 ## License
 
