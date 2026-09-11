@@ -58,7 +58,11 @@ class NotationManager
         $attrs = [];
         $attrs[] = 'data-rough-type="' . htmlspecialchars($type, ENT_QUOTES, 'UTF-8') . '"';
         $optionsJson = $this->toJsonOptions($options, $type);
-        $attrs[] = "data-rough-options='" . htmlspecialchars($optionsJson, ENT_QUOTES, 'UTF-8') . "'";
+        // Attribute is single-quote delimited, so only the delimiter itself needs escaping;
+        // the JSON's double quotes must stay raw or the value is no longer valid JSON to
+        // callers that read it directly (Blade::directive('roughNotationScripts') JSON.parse()s
+        // the attribute; browsers decode entities from getAttribute(), but not literal chars).
+        $attrs[] = "data-rough-options='" . str_replace("'", '&#039;', $optionsJson) . "'";
         if ($groupId) {
             $attrs[] = 'data-rough-group="' . htmlspecialchars($groupId, ENT_QUOTES, 'UTF-8') . '"';
         }

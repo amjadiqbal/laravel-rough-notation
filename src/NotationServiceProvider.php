@@ -59,7 +59,7 @@ class NotationServiceProvider extends ServiceProvider
                 . "window.initRoughNotation = initRoughNotation;"
                 . "document.addEventListener(\"DOMContentLoaded\", initRoughNotation);"
                 . "if (window.Livewire && window.Livewire.hook) {"
-                . "window.Livewire.hook('message.processed', () => { initRoughNotation(); });"
+                . "window.Livewire.hook(\"message.processed\", () => { initRoughNotation(); });"
                 . "}"
                 . "</script>';"
                 . " ?>";
